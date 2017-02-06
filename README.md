@@ -2,6 +2,21 @@
 
 ## Dev Documentation
 
+#### Start
+The label start is declared as global. From it, it calls the 'main' function.
+The start function:
+```assembly
+  start:
+    call main ; Call the main methods
+
+  exit:
+    push dword 1 ; syscall val return 1
+    mov eax, 1 ; syscal: sys_exit
+    sub esp, 4 ; allign stack pointer
+    int 0x80 ; Calling kernal
+```
+The 'exit' function calls the kernal to stop the program. Otherwise, it will invoke a Segmentation Fault.
+
 #### Variables
 ```assembly
 ; Variables
@@ -48,3 +63,4 @@
 
   mov eax, [eax]
 ```
+#### Functions
