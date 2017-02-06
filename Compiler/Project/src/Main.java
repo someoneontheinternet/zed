@@ -7,7 +7,7 @@ public class Main {
 	
 		Reader r = new Reader();
 		
-		String file = r.read("/Users/Admin/Documents/D/Compiler/Project/Syntax/", "test.d");
+		String file = r.read("/Users/Admin/Documents/Github/zed/Compiler/Project/Syntax/", "test.zed");
 		
 		Compiler c = new Compiler(file);
 		

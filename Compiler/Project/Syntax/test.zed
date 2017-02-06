@@ -1,11 +1,9 @@
-#include <print>
-
-int main() {
+function void main() {
 	int x;
 	x = 10;
 }
 
-int add(int x, int y) {
-	int out = x + y;
-	return out;
+function int getZero() {
+	return 0;
 }
+
