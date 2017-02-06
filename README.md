@@ -1,15 +1,17 @@
 # ZED Programming Language
 
-### Dev Documentation
+## Dev Documentation
 
 #### Variables
+```assembly
 ; Variables <br>
   sub esp, 4 ; Size of the variable <br>
   mov dword [ebp - 4], 0x0 ; Value <br>
   <br>
   mov eax, [ebp - 4] ; Use var by using ebp - offset <br>
-
+```
 #### Arrays
+```assembly
 ; Arrays  <br>
   ; int arr[3] <br>
   sub esp, 8 ; Init arr header <br>
@@ -45,3 +47,4 @@
   sub eax, 8 ; arr[1] mem addr = (index + 1) * eleSize <br>
  <br>
   mov eax, [eax] <br>
+```
