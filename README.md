@@ -3,7 +3,7 @@
 ## Dev Documentation
 
 #### Start
-The label start is declared as global. From it, it calls the 'main' function.
+The label start is declared as global. From it, it calls the ```main``` function.
 The start function:
 ```assembly
   start:
@@ -15,7 +15,7 @@ The start function:
     sub esp, 4 ; allign stack pointer
     int 0x80 ; Calling kernal
 ```
-The 'exit' function calls the kernal to stop the program. Otherwise, it will invoke a Segmentation Fault.
+The ```exit``` function calls the kernal to stop the program. Otherwise, it will invoke a Segmentation Fault.
 
 #### Variables
 ```assembly
