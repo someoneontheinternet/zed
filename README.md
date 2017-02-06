@@ -64,3 +64,18 @@ The ```exit``` function calls the kernal to stop the program. Otherwise, it will
   mov eax, [eax]
 ```
 #### Functions
+This is a C program equivalent that demonstrate what this code does.
+
+``` C
+int main(void) {
+  int x = 1;
+  int y = 2;
+
+  int z;
+  z = func(x, y);
+}
+
+int func(int x, int y) {
+  return x + y;
+}
+```
