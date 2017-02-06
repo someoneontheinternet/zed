@@ -79,3 +79,58 @@ int func(int x, int y) {
   return x + y;
 }
 ```
+Assembly/Machine Code equivalent.
+```assembly
+  main:
+    push ebp
+    mov ebp, esp ; Creating Stack Frame
+
+    sub esp, 4 ; init: int x
+    mov dword [ebp - 4], 0x1 ; x = 0x1
+
+    sub esp, 4 ; init y
+    mov dword [ebp - 8], 0x2 ; y = 0x2
+
+    ; Pushing arguments onto the Stack
+    push dword [ebp - 4] ; arg1
+    push dword [ebp - 8] ; arg1
+
+    call func ; calling mem addr of the function
+
+    pop eax ; Getting the return value
+
+    mov esp, ebp ; Destroying Stack Frame
+    pop ebp
+    ret ; return
+
+  func:
+    push ebp
+    mov ebp, esp
+
+    sub esp, 4 ; allocating space for arg
+    mov eax, [ebp + 12] ; Getting arg
+    mov dword [ebp - 4], eax ; init local x = eax
+
+    sub esp, 4 ; allocating space for arg
+    mov eax, [ebp + 16] ; Getting arg
+    mov dword [ebp - 8], eax ; init local y = eax
+
+    ; Addr offset Table
+    ; 0x4 - Return Address !Do not override this
+    ; 0x8 to Infiinity - arguments
+
+    ; !0x8 is also the return val after return
+
+    ; Getting value from memory
+    mov dword eax, [ebp - 4]
+    mov dword ebx, [ebp - 8]
+
+    add eax, ebx ; Add the two arguments
+
+    mov dword [ebp + 8], eax ; return val
+
+    mov esp, ebp ; Destroying stack frame
+    pop ebp
+    ret ; return
+
+```
