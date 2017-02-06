@@ -1,6 +1,8 @@
 package compiler;
 
+import java.awt.Point;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Compiler {
 
@@ -12,9 +14,9 @@ public class Compiler {
 	}
 	
 	public void compile() {
-		String out = "";
 		String file = this.file;
-		ArrayList<Integer> depth = genLevelDepth(file);
+		//    index    depth
+		ArrayList<Point> depth = genLevelDepth(file);
 		ArrayList<Integer> functionIndexes = findFunctionIndex(file);
 		
 		System.out.println(functionIndexes);
@@ -25,23 +27,24 @@ public class Compiler {
 		this.file = file;
 	}
 
-	private ArrayList<Integer> genLevelDepth(String file) {
-		ArrayList<Integer> depth = new ArrayList<>();
+	private ArrayList<Point> genLevelDepth(String file) {
+		
+		ArrayList<Point> depth = new ArrayList<>();
 		
 		int level = 100;
-		
+	
 		for (int i = 0; i < file.length(); i++) {
-			char c = file.charAt(i);
 			
-			if (c == '{') {
-				depth.add(level);
+			if (file.charAt(i) == '{') {
+				depth.add(new Point(i, level));
 				level = level - 1;
-			} 
-			
-			if (c == '}') {
-				level = level + 1;
-				depth.add(level);
 			}
+			
+			if (file.charAt(i) == '}') {
+				level = level - 1;
+				depth.add(new Point(i, level));
+			}		
+			
 		}
 		
 		return depth;

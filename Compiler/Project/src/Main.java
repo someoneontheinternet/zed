@@ -9,6 +9,8 @@ public class Main {
 		
 		String file = r.read("/Users/Admin/Documents/Github/zed/Compiler/Project/Syntax/", "test.zed");
 		
+		System.out.println(file);
+		
 		Compiler c = new Compiler(file);
 		
 		c.compile();

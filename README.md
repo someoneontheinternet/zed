@@ -31,7 +31,7 @@ The ```exit``` function calls the kernal to stop the program. Otherwise, it will
   ; int arr[3]
   sub esp, 8 ; Init arr header
   mov dword [ebp - 4], esp
-  mov dword [ebp - 8], 3v
+  mov dword [ebp - 8], 3
 
   sub esp, 12 ; Allocating Space for content  
 
