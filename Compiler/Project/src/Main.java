@@ -9,14 +9,14 @@ public class Main {
 		
 		String file = r.read("/Users/Admin/Documents/Github/zed/Compiler/Project/Syntax/", "test.zed");
 		
-		System.out.println(file);
+		System.out.println("Input: " + file);
 		
 		Compiler c = new Compiler(file);
 		
 		c.compile();
 		
-		System.out.println(c.getError());
-		System.out.println(c.getFile());
+		System.out.println("Error: " + c.getError());
+		System.out.println("Output: " + c.getFile());
 		
 	}
 }
