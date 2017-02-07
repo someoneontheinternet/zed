@@ -190,4 +190,8 @@ body:
   pop eax ; eax have the val of program counter
   jmp eax ; jump back to the start to be compared again
 
+section .data
+  msg:  db "Hi", 0xa
+  len:  equ $ - msg
+
 ```
