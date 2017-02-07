@@ -132,5 +132,34 @@ Assembly/Machine Code equivalent.
     mov esp, ebp ; Destroying stack frame
     pop ebp
     ret ; return
+```
 
+#### if statements
+```assembly
+
+  ; if statement
+  mov eax, 0xa ; use eax to compare values
+
+  mov edx, 0x0 ; default
+
+  ; for more jmp instr than jmp equal
+  ; <http://unixwiz.net/techtips/x86-jumps.html>
+
+  cmp eax, 0xa
+  push dword $
+  je ifTrue ; change edx's val
+  nop ; Safe
+
+  mov edx, edx
+
+  mov esp, ebp ; Destroying Stack Frame
+  pop ebp
+  ret ; return
+
+ifTrue:
+  mov edx, 0x1 ; Change edx's val
+
+  pop eax
+  add eax, 8 ; Should land on nop
+  jmp eax ; Jump back into main
 ```
