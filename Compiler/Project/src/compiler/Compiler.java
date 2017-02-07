@@ -5,12 +5,15 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 
+import compiler.types.Function;
+
 public class Compiler {
 	
 	public HashMap<String, Integer> typeSize = new HashMap<>();
 	
 	private String file;
 	private String Error = "";
+	private Body body = new Body();
 	
 	public Compiler(String file) {
 		this.file = file;
@@ -50,9 +53,13 @@ public class Compiler {
 		}
 		
 		String function = file.substring(fStartIndex + 9, fEndIndex);
+		Function f = parseFunction(function);
 		
-		System.out.println(function);
+		System.out.println(f);
 		
+	}
+	
+	private Function parseFunction(String function) {
 		int firstSpaceIndex = function.indexOf(' ');
 		int secondSpaceIndex = function.indexOf('(', firstSpaceIndex + 1);
 		int thirdSpaceIndex = function.indexOf(')', secondSpaceIndex);
@@ -71,6 +78,8 @@ public class Compiler {
 		}
 		
 		String content = function.substring(thirdSpaceIndex + 3, function.length() - 1);
+		
+		return new Function(name, retSize, arguments, content);
 		
 	}
 
