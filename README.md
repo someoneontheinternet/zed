@@ -148,7 +148,7 @@ Assembly/Machine Code equivalent.
   cmp eax, 0xa
   push dword $
   je ifTrue ; change edx's val
-  nop ; Safe
+  nop ; For incase jmp eax varies
 
   mov edx, edx
 
@@ -162,4 +162,32 @@ ifTrue:
   pop eax
   add eax, 8 ; Should land on nop
   jmp eax ; Jump back into main
+```
+
+#### while loops
+
+```assembly
+
+  mov ebx, 0x1 ; Loop ebx from 1 - 10
+  ; Condition: ( ebx < 10 )
+  push dword $ ; Pushing current program counter to jump to later
+  cmp ebx, 0xa ; comparing ebx with 10
+  jl body ; Jumping to loop body
+
+body:
+  inc ebx ; Add 1 to ebx until its 10
+
+  ; Print a message
+  push dword len
+  push dword msg
+  push dword 1
+  mov eax, 4
+  sub esp, 4
+  int 0x80 ; Calling kernal
+  add esp, 16
+
+  ; jump back to compare again
+  pop eax ; eax have the val of program counter
+  jmp eax ; jump back to the start to be compared again
+
 ```
