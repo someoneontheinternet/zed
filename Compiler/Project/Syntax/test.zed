@@ -1,9 +1,17 @@
 function void main() {
-	int x;
-	x = 10;
+	
+	@int x;
+	$x = 10;
+	
+	@int y = 12;
+	
+	if ($x == $y) {
+		$y++;
+	}
 }
 
-function int add(int a, int b) {
-	return a + b;
+function int add(@int a, @int b) {
+	@int out = $a + $b;
+	return $out;
 }
 

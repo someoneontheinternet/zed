@@ -9,7 +9,7 @@ import compiler.types.Function;
 
 public class Compiler {
 	
-	public HashMap<String, Integer> typeSize = new HashMap<>();
+	public static HashMap<String, Integer> typeSize = new HashMap<>();
 	
 	private String file;
 	private String Error = "";
@@ -34,9 +34,6 @@ public class Compiler {
 		ArrayList<Point> depth = genLevelDepth(file);
 		ArrayList<Integer> functionIndexes = findFunctionIndex(file);
 		
-		//System.out.println(depth.toString().replaceAll("java.awt.Point", ""));
-		//System.out.println(functionIndexes);
-		
 		for (int num : functionIndexes) {
 			int end = findEndIndex(file, depth, num);
 			compileFunction(num, end);
@@ -56,6 +53,8 @@ public class Compiler {
 		Function f = parseFunction(function);
 		
 		System.out.println(f);
+		
+		String content = body.compileContent(f.content);
 		
 	}
 	

@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 public class Function {
 
-	String name;
-	int retSize;
-	ArrayList<String> arguments = new ArrayList<>();
-	String content;
+	public String name;
+	public int retSize;
+	public ArrayList<String> arguments = new ArrayList<>();
+	public String content;
 	
 	public Function(String name, int retSize, ArrayList<String> arguments, String content) {
 		this.name = name;
